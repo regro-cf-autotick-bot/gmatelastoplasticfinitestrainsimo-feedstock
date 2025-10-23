@@ -1,6 +1,6 @@
 {% set org = "tdegeus" %}
 {% set name = "GMatElastoPlasticFiniteStrainSimo" %}
-{% set version = "0.3.0" %}
+{% set version = "0.3.1" %}
 
 package:
   name: {{ name|lower }}-split
@@ -8,10 +8,10 @@ package:
 
 source:
   url: https://github.com/{{ org }}/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 7faf0df9d05710bc7c7703b75f3232a97b08ad258296ae6a3b6ae8cfe49eca76
+  sha256: f9ac4a2071d084657a730f6bd210e01b911f57d402ffad894f955b2d90621fe7
 
 build:
-  number: 2
+  number: 0
 
 outputs:
 
@@ -26,6 +26,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('cxx') }}
+        - {{ stdlib("c") }}
         - cmake
         - make  # [unix]
       host:
@@ -59,6 +60,7 @@ outputs:
         - numpy *                             # [build_platform != target_platform]
         - setuptools_scm                      # [build_platform != target_platform]
         - {{ compiler('cxx') }}
+        - {{ stdlib("c") }}
         - cmake
         - make  # [unix]
         - ninja
